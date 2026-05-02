@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Pengumuman Kelulusan</title>
+
+<style>
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+}
+
+/* LOADING SCREEN */
+#loading {
+    position: fixed;
+    width: 100%;
+    height: 100vh;
+    background: linear-gradient(135deg, #0a2a66, #1e90ff);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    z-index: 9999;
+    color: white;
+    text-align: center;
+    transition: opacity 0.8s ease, transform 0.8s ease;
+}
+
+/* FADE OUT */
+#loading.fade-out {
+    opacity: 0;
+    transform: scale(1.05);
+}
+
+/* LOGO */
+#loading img {
+    width: 120px;
+    margin-bottom: 10px;
+}
+
+/* NAMA SEKOLAH */
+#loading h1 {
+    font-size: 20px;
+    letter-spacing: 2px;
+    margin: 10px 0 15px;
+}
+
+/* SPINNER */
+.loader {
+    border: 6px solid #ffffff50;
+    border-top: 6px solid #ffffff;
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    animation: spin 1s linear infinite;
+    margin: 10px 0;
+}
+
+@keyframes spin {
+    100% { transform: rotate(360deg); }
+}
+
+/* BUTTON */
+.button {
+    margin-top: 15px;
+    padding: 10px 20px;
+    background: white;
+    color: #0a2a66;
+    border: none;
+    border-radius: 25px;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+/* IFRAME */
+iframe {
+    width: 100%;
+    height: 100vh;
+    border: none;
+}
+
+/* RESPONSIVE */
+@media (max-width: 600px) {
+    #loading img { width: 80px; }
+    #loading h1 { font-size: 16px; }
+}
+</style>
+
+</head>
+<body>
+
+<!-- LOADING -->
+<div id="loading">
+    <img src="https://cdn.phototourl.com/free/2026-05-01-aa89c1be-720b-4cc4-b8a3-14833faec1f8.webp">
+
+    <h1>SMA NEGERI 2 MUARADUA</h1>
+
+    <div class="loader"></div>
+    <h2>Memuat Pengumuman...</h2>
+
+    <!-- tombol refresh -->
+    <button class="button" onclick="refreshPage()">🔄 Cek Ulang</button>
+</div>
+
+<!-- IFRAME -->
+<iframe 
+    src="https://script.google.com/macros/s/AKfycby14YxWtBlI5CQXAvV3iZoMQHZm3UEiugQ57WyASErdYm21QVFW7GP0850wd6p0T88/exec"
+    onload="hideLoading()">
+</iframe>
+
+<script>
+function hideLoading() {
+    const loading = document.getElementById("loading");
+    loading.classList.add("fade-out");
+
+    setTimeout(() => {
+        loading.style.display = "none";
+    }, 800);
+}
+
+function refreshPage() {
+    location.reload();
+}
+</script>
+
+</body>
+</html>
